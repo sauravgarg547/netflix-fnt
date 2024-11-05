@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+  - push
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - echo "this is build stage using command <docker build -t netflix-app .>"
+
+test_job:
+  stage: test
+  script:
+    - echo "this is test stage"
+
+push_job:
+  stage: push
+  script:
+    - echo "this is push stage using command <docker push netflix-app>"
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo "this is deploy stage using command <docker run -p 3000:3000 netflix-app>"
