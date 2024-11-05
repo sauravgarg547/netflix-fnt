@@ -7,27 +7,27 @@ stages:
 build_job:
   stage: build
   script:
-    - echo "this is build stage using command: docker build -t netflix-app ."
+    - docker build -t netflix-app .
   tags:
     - dev  
 
 test_job:
   stage: test
   script:
-    - echo "this is test stage"
+    - echo "Running tests"
   tags:
     - dev
 
 push_job:
   stage: push
   script:
-    - echo "this is push stage using command: docker push netflix-app"
+    - docker push netflix-app
   tags:
     - dev
 
 deploy_job:
   stage: deploy
   script:
-    - echo "this is deploy stage using command: docker run -p 3000:3000 netflix-app"
+    - docker run -p 3000:3000 netflix-app
   tags:
     - dev
