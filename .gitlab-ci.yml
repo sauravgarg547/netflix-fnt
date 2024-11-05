@@ -28,6 +28,6 @@ push_job:
 deploy_job:
   stage: deploy
   script:
-   - docker run -d -p 3000:3000 netflix-app
+   - docker run -d -p 3000:3000 --name netflix netflix-app
   tags:
     - dev
