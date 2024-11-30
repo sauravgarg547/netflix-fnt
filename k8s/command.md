@@ -114,9 +114,9 @@ kubectl apply -f service.yml
  -Forward a local port to the service port to access the application from outside the cluster.
 
  -Forward local port 3000 to the service in the ott namespace, making it accessible on 0.0.0.0.
-
+- (&) use for backgroud
 ```bash
-kubectl port-forward service/netflix-service -n ott 3000:3000 --address=0.0.0.0
+kubectl port-forward service/netflix-service -n ott 3000:3000 --address=0.0.0.0 &
 ```
 
 ## Access the Application 
