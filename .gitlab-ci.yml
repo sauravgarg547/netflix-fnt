@@ -9,25 +9,25 @@ build_job:
   script:
    - docker build -t netflix-app .
   tags:
-    - dev
+    - prod
 
 test_job:
   stage: test
   script:
    - echo "this is test stage"
   tags:
-    - dev
+    - prod
 
 push_job:
   stage: push
   script:
    - echo "this is push stage using command <docker push netflix-app>"
   tags:
-    - dev
+    - prod
 
 deploy_job:
   stage: deploy
   script:
    - docker run -d -p 3000:3000 --name netflix netflix-app
   tags:
-    - dev
+    - prod
