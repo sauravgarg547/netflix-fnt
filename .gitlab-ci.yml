@@ -4,30 +4,51 @@ stages:
   - push
   - deploy
 
+# Build Job: Build the Docker image
 build_job:
   stage: build
+  image: docker:latest  # Docker image with Docker CLI installed
+  services:
+    - docker:dind  # Enable Docker-in-Docker for building Docker images
   script:
-   - docker build -t netflix-app .
+    - echo "Starting Build Stage..."
+    - docker build -t netflix-app .  # Build Docker image
+    - echo "Build Completed!"
   tags:
     - prod
 
+# Test Job: You can add your test commands here
 test_job:
   stage: test
+  image: node:latest  # Use Node image for tests
   script:
-   - echo "this is test stage"
+    - echo "Running tests..."
+    - echo "Tests completed successfully!"
   tags:
     - prod
 
+# Push Job: Push the Docker image to a registry
 push_job:
   stage: push
+  image: docker:latest  # Docker image with Docker CLI installed
+  services:
+    - docker:dind  # Docker-in-Docker for pushing the image
   script:
-   - echo "this is push stage using command <docker push netflix-app>"
+    - echo "Pushing Docker image to registry..."
+    - docker push netflix-app  # Push the image to Docker registry (adjust this for your registry)
+    - echo "Push Completed!"
   tags:
     - prod
 
+# Deploy Job: Run the Docker container
 deploy_job:
   stage: deploy
+  image: docker:latest  # Docker image with Docker CLI installed
+  services:
+    - docker:dind  # Docker-in-Docker for running the container
   script:
-   - docker run -d -p 3000:3000 --name netflix netflix-app
+    - echo "Starting Deployment Stage..."
+    - docker run -d -p 3000:3000 --name netflix netflix-app  # Run Docker container from built image
+    - echo "Deployment Completed!"
   tags:
     - prod
