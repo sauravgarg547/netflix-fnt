@@ -24,4 +24,4 @@ spec:
           service:
             name: netflix-service
             port:
-              number: 3000
+              number: 3001
