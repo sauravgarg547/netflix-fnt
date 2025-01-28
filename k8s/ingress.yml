@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netflix-ingress
+  namespace: ott
+spec:
+  tls:
+  - hosts:
+    - netflix.90daysofdevops.xyz # Domain name
+    secretName: netflix-tls
+  ingressClassName: nginx
+  rules:
+  - host: netflix.90daysofdevops.xyz # Domain name
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: netflix-service
+            port:
+              number: 3000
