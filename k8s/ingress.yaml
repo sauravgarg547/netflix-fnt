@@ -6,7 +6,7 @@ metadata:
     name: myingress
 spec:
   rules:
-  - host: fntui.com
+  - host: netflix.com
     http:
       paths:
       - pathType: Prefix
