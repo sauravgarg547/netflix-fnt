@@ -20,7 +20,7 @@ RUN npm run build
 RUN npm install -g serve
 
 # Step 8: Expose the port Vite uses in production
-EXPOSE 3000
+EXPOSE 3001
 
 # Step 9: Serve the app
 CMD ["serve", "-s", "dist"]
